@@ -3,15 +3,12 @@ import React, { useEffect, useRef, useState } from "react";
 import data from '../assets/web_trajs.json';
 import "../static/demo.css";
 import "../static/button.css";
+import "../static/index.css";
 
 import EditorPanel from "./panels/EditorPanel";
 import TerminalPanel from "./panels/TerminalPanel";
 import WorkspacePanel from "./panels/WorkspacePanel";
-
-import {
-  instanceToLogo,
-  instanceToSelectOption
-} from './utils/instanceToUI';
+import LLMModels from './utils/models';
 import Submission from "./Submission";
 
 const Demo = () => {
@@ -117,17 +114,42 @@ const Demo = () => {
     <div className="container-demo">
       <hr />
       <div id="demo">
-        <div id="selectTraj">
-          <label htmlFor="selectTraj">
-            {instanceToLogo(selectedTraj)}
-          </label>
-          <select value={selectedTrajID} onChange={handleSelectChange}>
-            {data.map((item, index) => (
-              <option key={index} value={item.instance_id}>
-                {instanceToSelectOption(item)}
-              </option>
-            ))}
-          </select>
+        <div className="flex items-center justify-between space-x-4 p-2">
+          <div className="flex-1">
+            {/* <label htmlFor="model" className="text-sm text-gray-500">
+              LM Models
+            </label> */}
+            <select
+              id="model"
+              name="model"
+              className="mt-1 block w-full rounded-md py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm"
+              defaultValue="ChatGPT"
+            >
+              {Object.values(LLMModels).map((model) => (
+                <option key={model.name}>
+                  <strong>{model.name}</strong>
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex-1">
+            <input
+              type="text" 
+              id="issue"
+              name="issue"
+              className="py-1.5 pl-4 mt-1 block w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm"
+              placeholder="Issue link"
+              aria-describedby="repo-issue"
+            />
+          </div>
+
+          <button
+            type="button"
+            className="rounded-md bg-indigo-200 px-3 py-2 text-sm font-semibold text-indigo-900 shadow-sm hover:bg-indigo-300"
+          >
+            Run
+          </button>
         </div>
         <hr />
         <div className="panels">
@@ -168,13 +190,13 @@ const Demo = () => {
           >
             ↺ Reset
           </button>
-          <button
+          {/* <button
             className={`float-button ${stepIdx === selectedTraj.history.length - 1 ? 'hidden' : ''}`}
             disabled={isTyping || isSubmissionExpanded || stepIdx === selectedTraj.history.length}
             onClick={handleNextClick}
           >
             Next Step →
-          </button>
+          </button> */}
           <button
             className={`float-button ${stepIdx !== selectedTraj.history.length - 1 ? 'hidden' : ''}`}
             disabled={isTyping || isSubmissionExpanded}
@@ -182,9 +204,9 @@ const Demo = () => {
           >
             % Results
           </button>
-          <span style={{ margin: "0 1em" }}>
+          {/* <span style={{ margin: "0 1em" }}>
             # Turn {stepIdx} / {selectedTraj.history.length - 1}
-          </span>
+          </span> */}
         </div>
       </div>
       <Submission
