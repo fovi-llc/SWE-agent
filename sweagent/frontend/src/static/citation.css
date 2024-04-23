@@ -1,0 +1,32 @@
+#citation {
+    position: relative;
+
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background-color: #0d1117;
+        border-radius: 0.5em;
+        color: white;
+        padding: 1em;
+    }
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin: 0.5em 0.5em 0 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 'transform 0.1s ease';
+
+        img {
+            width: auto;
+            height: 1.5em;
+        }
+
+        :active {
+            transform: scale(0.95);
+        }
+    }
+}

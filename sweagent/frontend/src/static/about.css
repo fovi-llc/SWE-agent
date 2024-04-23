@@ -1,0 +1,48 @@
+@keyframes buttonClickAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.about {
+  #title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em 0;
+  }
+
+  #title-image { 
+    height: 8em;
+    width: auto;
+  }
+
+  hr {
+    border-top: 1px dotted #bbb;
+    margin: 0.5em 0;
+    width: 100%;
+  }
+
+  #resources {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    button {
+      margin: 0 0.5em;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}

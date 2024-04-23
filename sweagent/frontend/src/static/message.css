@@ -1,0 +1,42 @@
+.message {
+  background-color: #eee;
+  border-radius: 0 1em 1em 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.25em 1em;
+}
+
+.message-code {
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: hidden;
+}
+
+@keyframes typing {
+  from { width: 0; }
+}
+
+.fade-in {
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInCascade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-cascade {
+  animation: fadeInCascade 1s ease forwards;
+}
